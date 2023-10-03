@@ -20,6 +20,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.7.2",
     "@commitlint/config-conventional": "^17.7.0",
+    "@shelf/jest-mongodb": "^4.1.7",
     "@types/jest": "^29.5.5",
     "@types/node": "^20.8.2",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
@@ -38,7 +39,8 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "module-alias": "^2.2.3"
+    "module-alias": "^2.2.3",
+    "mongodb": "^6.1.0"
   },
   "_moduleAliases": {
     "@domain": "dist/domain",
