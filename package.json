@@ -23,6 +23,7 @@
     "@shelf/jest-mongodb": "^4.1.7",
     "@types/jest": "^29.5.5",
     "@types/node": "^20.8.2",
+    "@types/supertest": "^2.0.14",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "concurrently": "^8.2.1",
     "eslint": "^8.50.0",
@@ -35,12 +36,13 @@
     "lint-staged": "^14.0.1",
     "nodemon": "^3.0.1",
     "rimraf": "^5.0.5",
+    "supertest": "^6.3.3",
     "ts-jest": "^29.1.1",
     "typescript": "^5.2.2"
   },
   "dependencies": {
     "module-alias": "^2.2.3",
-    "mongodb": "^6.1.0"
+    "mongodb": "^4.17.1"
   },
   "_moduleAliases": {
     "@domain": "dist/domain",
