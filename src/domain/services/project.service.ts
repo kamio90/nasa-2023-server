@@ -4,6 +4,9 @@ import {
   ProjectModel,
   type ProjectDocument,
 } from '@domain/entity/project.entity';
+import { ProjectBenefit } from '@domain/interfaces/project/project-benefit.interface';
+import { ProjectBudget } from '@domain/interfaces/project/project-budget.interface';
+import { ProjectCategory } from '@domain/interfaces/project/project-category.interface';
 import { ProjectPlace } from '@domain/interfaces/project/project-place.interface';
 import { ProjectStatus } from '@domain/interfaces/project/project-status.interface';
 import { Types } from 'mongoose';
@@ -97,5 +100,17 @@ export class ProjectService {
 
   async getProjectStatus(): Promise<ResponseType> {
     return { success: true, message: new Array(ProjectStatus) };
+  }
+
+  async getProjectBenefit(): Promise<ResponseType> {
+    return { success: true, message: new Array(ProjectBenefit) };
+  }
+
+  async getProjectBudget(): Promise<ResponseType> {
+    return { success: true, message: new Array(ProjectBudget) };
+  }
+
+  async getProjectCategory(): Promise<ResponseType> {
+    return { success: true, message: new Array(ProjectCategory) };
   }
 }

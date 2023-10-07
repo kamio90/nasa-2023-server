@@ -67,6 +67,54 @@ router.get('/config/status', async (req: Request, res: Response) => {
   }
 });
 
+router.get('/config/benefit', async (req: Request, res: Response) => {
+  try {
+    const projectService = new ProjectService();
+
+    const result = await projectService.getProjectBenefit();
+
+    if (result.success) {
+      res.status(200).json({ message: result.message });
+    } else {
+      res.status(500).json({ message: 'Server error' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+});
+
+router.get('/config/budget', async (req: Request, res: Response) => {
+  try {
+    const projectService = new ProjectService();
+
+    const result = await projectService.getProjectBudget();
+
+    if (result.success) {
+      res.status(200).json({ message: result.message });
+    } else {
+      res.status(500).json({ message: 'Server error' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+});
+
+router.get('/config/category', async (req: Request, res: Response) => {
+  try {
+    const projectService = new ProjectService();
+
+    const result = await projectService.getProjectCategory();
+
+    if (result.success) {
+      res.status(200).json({ message: result.message });
+    } else {
+      res.status(500).json({ message: 'Server error' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+});
+
 router.get('/config/place', async (req: Request, res: Response) => {
   try {
     const projectService = new ProjectService();

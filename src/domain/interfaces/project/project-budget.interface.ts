@@ -1,0 +1,15 @@
+export enum ProjectBudget {
+  ResearchScholarships = 'Research Scholarships',
+  FullTimeEmploymentContracts = 'Full-time employment contracts',
+  ResearchGrants = 'Research grants',
+  RoyaltiesForPublications = 'Royalties for publications: journal or scientific paper',
+  ResearchContractsWithPrivateSector = 'Research contracts with the private sector',
+  PhDScholarships = 'PhD Scholarships',
+  AwardsForScientificAchievements = 'Awards for scientific achievements',
+  RemunerationForParticipationInClinicalTrials = 'Remuneration for participation in clinical trials',
+  ResearchContracts = 'Research contracts',
+  RemunerationForParticipationInExpertOpinionsAndEvaluations = 'Remuneration for participation in expert opinions and evaluations',
+  ShareInProfitsFromCommercializationOfResearchResults = 'Share in profits from the commercialization of research results',
+  Internship = 'Internship',
+  Volunteering = 'Volunteering',
+}
