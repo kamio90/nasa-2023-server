@@ -6,3 +6,4 @@
 /coverage
 globalConfig.json
 /**/*.log
+.env

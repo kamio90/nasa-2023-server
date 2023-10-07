@@ -3,6 +3,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { connectToDatabase } from '@infrastructure/database/mongoose';
 import logger from '@infrastructure/log/logger';
+import 'dotenv/config';
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;

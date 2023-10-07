@@ -3,7 +3,10 @@ import * as mongoose from 'mongoose';
 
 export async function connectToDatabase(): Promise<void> {
   try {
-    await mongoose.connect('mongodb://localhost:27017/circle-edge-server', {});
+    await mongoose.connect(
+      process.env.DATABASE ?? 'mongodb://localhost:27017/circle-edge-server',
+      {}
+    );
 
     logger.info('Connected to database');
   } catch (error) {
