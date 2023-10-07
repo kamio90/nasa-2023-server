@@ -4,6 +4,7 @@ import { UserAcademicTitle } from '@domain/interfaces/user-academic-title.interf
 import { UserCity } from '@domain/interfaces/user-city.interface';
 import { UserCountry } from '@domain/interfaces/user-country.interface';
 import { UserEducation } from '@domain/interfaces/user-education.interface';
+import { UserLanguages } from '@domain/interfaces/user-languages.interface';
 import { validateUserInput } from '@domain/validation/user.validation';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
@@ -90,6 +91,10 @@ export class UserService {
 
   async getUserEducation(): Promise<ResponseType> {
     return { success: true, message: new Array(UserEducation) };
+  }
+
+  async getUserLanguages(): Promise<ResponseType> {
+    return { success: true, message: new Array(UserLanguages) };
   }
 
   async test(): Promise<ResponseType> {

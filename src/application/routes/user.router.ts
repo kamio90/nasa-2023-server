@@ -99,6 +99,22 @@ router.get('/config/education', async (req: Request, res: Response) => {
   }
 });
 
+router.get('/config/languages', async (req: Request, res: Response) => {
+  try {
+    const userService = new UserService();
+
+    const result = await userService.getUserLanguages();
+
+    if (result.success) {
+      res.status(200).json({ message: result.message });
+    } else {
+      res.status(500).json({ message: 'Server error' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+});
+
 router.get('/test', async (req: Request, res: Response) => {
   try {
     const userService = new UserService();

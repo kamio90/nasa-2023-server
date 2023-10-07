@@ -2,6 +2,7 @@ import { UserAcademicTitle } from '@domain/interfaces/user-academic-title.interf
 import { UserCity } from '@domain/interfaces/user-city.interface';
 import { UserCountry } from '@domain/interfaces/user-country.interface';
 import { UserEducation } from '@domain/interfaces/user-education.interface';
+import { UserLanguages } from '@domain/interfaces/user-languages.interface';
 import { Document, Schema, type Model, model } from 'mongoose';
 
 export class User extends Document {
@@ -15,7 +16,7 @@ export class User extends Document {
     public education: UserEducation,
     public academicTitle: UserAcademicTitle,
     public workExperience: number,
-    public primaryLanguage: string
+    public primaryLanguage: UserLanguages
   ) {
     super();
   }
@@ -39,7 +40,11 @@ const UserSchema: Schema = new Schema({
     required: true,
   },
   workExperience: { type: Number, required: true },
-  primaryLanguage: { type: String, required: true },
+  primaryLanguage: {
+    type: String,
+    enum: Object.values(UserLanguages),
+    required: true,
+  },
 });
 
 export const UserModel: Model<User> = model<User>('User', UserSchema);
