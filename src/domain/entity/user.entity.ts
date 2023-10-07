@@ -1,4 +1,4 @@
-import { UserAcademicTitle } from '@domain/interfaces/user-academic-title.interface';
+import { UserAcademicTitleBase } from '@domain/interfaces/user-academic-title.interface';
 import { UserCity } from '@domain/interfaces/user-city.interface';
 import { UserCountry } from '@domain/interfaces/user-country.interface';
 import { UserEducation } from '@domain/interfaces/user-education.interface';
@@ -14,7 +14,7 @@ export class User extends Document {
     public country: UserCountry,
     public city: UserCity,
     public education: UserEducation,
-    public academicTitle: UserAcademicTitle,
+    public academicTitle: UserAcademicTitleBase,
     public workExperience: number,
     public primaryLanguage: UserLanguages
   ) {
@@ -36,7 +36,7 @@ const UserSchema: Schema = new Schema({
   },
   academicTitle: {
     type: String,
-    enum: Object.values(UserAcademicTitle),
+    enum: Object.values(UserAcademicTitleBase),
     required: true,
   },
   workExperience: { type: Number, required: true },

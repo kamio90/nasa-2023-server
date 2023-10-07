@@ -32,6 +32,82 @@ router.get('/config/academic-title', async (req: Request, res: Response) => {
   }
 });
 
+router.get(
+  '/config/academic-title/usa',
+  async (req: Request, res: Response) => {
+    try {
+      const userService = new UserService();
+
+      const result = await userService.getUserAcademicTitleUSA();
+
+      if (result.success) {
+        res.status(200).json({ message: result.message });
+      } else {
+        res.status(500).json({ message: 'Server error' });
+      }
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
+  }
+);
+
+router.get(
+  '/config/academic-title/other',
+  async (req: Request, res: Response) => {
+    try {
+      const userService = new UserService();
+
+      const result = await userService.getUserAcademicTitleOther();
+
+      if (result.success) {
+        res.status(200).json({ message: result.message });
+      } else {
+        res.status(500).json({ message: 'Server error' });
+      }
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
+  }
+);
+
+router.get(
+  '/config/academic-title/europe',
+  async (req: Request, res: Response) => {
+    try {
+      const userService = new UserService();
+
+      const result = await userService.getUserAcademicTitleEurope();
+
+      if (result.success) {
+        res.status(200).json({ message: result.message });
+      } else {
+        res.status(500).json({ message: 'Server error' });
+      }
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
+  }
+);
+
+router.get(
+  '/config/academic-title/canada',
+  async (req: Request, res: Response) => {
+    try {
+      const userService = new UserService();
+
+      const result = await userService.getUserAcademicTitleCanada();
+
+      if (result.success) {
+        res.status(200).json({ message: result.message });
+      } else {
+        res.status(500).json({ message: 'Server error' });
+      }
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
+  }
+);
+
 router.get('/config/city', async (req: Request, res: Response) => {
   try {
     const userService = new UserService();

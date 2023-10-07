@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-catch */
 import { UserModel, type User } from '@domain/entity/user.entity';
-import { UserAcademicTitle } from '@domain/interfaces/user-academic-title.interface';
+import { UserAcademicTitleBase } from '@domain/interfaces/user-academic-title.interface';
 import { UserCity } from '@domain/interfaces/user-city.interface';
 import { UserCountry } from '@domain/interfaces/user-country.interface';
 import { UserEducation } from '@domain/interfaces/user-education.interface';
@@ -9,6 +9,10 @@ import { validateUserInput } from '@domain/validation/user.validation';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { type Request } from 'express';
+import { UserAcademicTitleEurope } from '@domain/interfaces/user-academic-title-europe.interface';
+import { UserAcademicTitleCanada } from '@domain/interfaces/user-academic-title-canada.interface';
+import { UserAcademicTitleOther } from '@domain/interfaces/user-academic-title-other.interface';
+import { UserAcademicTitleUSA } from '@domain/interfaces/user-academic-title-usa.interface';
 
 interface ResponseType {
   success: boolean;
@@ -80,8 +84,24 @@ export class UserService {
     }
   }
 
+  async getUserAcademicTitleUSA(): Promise<ResponseType> {
+    return { success: true, message: new Array(UserAcademicTitleUSA) };
+  }
+
+  async getUserAcademicTitleOther(): Promise<ResponseType> {
+    return { success: true, message: new Array(UserAcademicTitleOther) };
+  }
+
+  async getUserAcademicTitleEurope(): Promise<ResponseType> {
+    return { success: true, message: new Array(UserAcademicTitleEurope) };
+  }
+
+  async getUserAcademicTitleCanada(): Promise<ResponseType> {
+    return { success: true, message: new Array(UserAcademicTitleCanada) };
+  }
+
   async getUserAcademicTitle(): Promise<ResponseType> {
-    return { success: true, message: new Array(UserAcademicTitle) };
+    return { success: true, message: new Array(UserAcademicTitleBase) };
   }
 
   async getUserCity(): Promise<ResponseType> {
