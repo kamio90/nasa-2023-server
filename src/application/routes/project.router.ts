@@ -9,7 +9,8 @@ const router = express.Router();
 router.get('/projects', async (req: Request, res: Response) => {
   try {
     const projectService = new ProjectService();
-    const projects = await projectService.getAllProjects();
+    const filters = req.query as Record<string, string>;
+    const projects = await projectService.getAllProjects(filters);
     res.status(200).json(projects);
   } catch (error) {
     res.status(500).json({ message: error });

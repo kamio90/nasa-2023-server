@@ -8,11 +8,14 @@ import { UserLanguages } from '@domain/interfaces/user-languages.interface';
 import { validateUserInput } from '@domain/validation/user.validation';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { type Request } from 'express';
+
 interface ResponseType {
   success: boolean;
   message: string | any[];
   token?: string;
 }
+
 export class UserService {
   async createUser(userInput: User): Promise<ResponseType> {
     try {
@@ -99,5 +102,29 @@ export class UserService {
 
   async test(): Promise<ResponseType> {
     return { success: true, message: 'Test passed' };
+  }
+
+  async getAllUsers(query: Request['query']): Promise<User[]> {
+    try {
+      const filters: Record<string, any> = {};
+
+      if (query.title != null) {
+        filters.title = { $regex: query.title, $options: 'i' };
+      }
+
+      const users = await UserModel.find(filters);
+      return users;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getUserById(userId: string): Promise<User | null> {
+    try {
+      const user = await UserModel.findById(userId);
+      return user;
+    } catch (error) {
+      throw error;
+    }
   }
 }

@@ -15,9 +15,21 @@ interface ResponseType {
 }
 
 export class ProjectService {
-  async getAllProjects(): Promise<ProjectDocument[]> {
+  async getAllProjects(
+    filters: Record<string, string>
+  ): Promise<ProjectDocument[]> {
     try {
-      const projects = await ProjectModel.find();
+      const query: Record<string, any> = {};
+
+      if (filters.title.length > 0) {
+        query.title = { $regex: filters.title, $options: 'i' };
+      }
+
+      if (filters.status.length > 0) {
+        query.status = filters.status;
+      }
+
+      const projects = await ProjectModel.find(query);
       return projects;
     } catch (error) {
       throw error;
