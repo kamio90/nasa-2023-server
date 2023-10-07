@@ -5,10 +5,12 @@ import { connectToDatabase } from '@infrastructure/database/mongoose';
 import logger from '@infrastructure/log/logger';
 import 'dotenv/config';
 import userRouter from '@application/routes/user.router';
+import cors from 'cors';
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
 
+app.use(cors());
 app.use(bodyParser.json());
 
 (async () => {
