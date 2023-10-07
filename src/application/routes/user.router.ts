@@ -1,7 +1,20 @@
+import { type User } from '@domain/entity/user.entity';
 import { UserService } from '@domain/services/user.service';
 import express, { type Request, type Response } from 'express';
 
 const router = express.Router();
+
+router.post('/create', async (req: Request, res: Response) => {
+  try {
+    const userService = new UserService();
+
+    const newUserInput: User = req.body;
+    const createdUser = await userService.createUser(newUserInput);
+    res.status(201).json(createdUser);
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+});
 
 router.get('/config/academic-title', async (req: Request, res: Response) => {
   try {
@@ -15,7 +28,7 @@ router.get('/config/academic-title', async (req: Request, res: Response) => {
       res.status(500).json({ message: 'Server error' });
     }
   } catch (error) {
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: error });
   }
 });
 
