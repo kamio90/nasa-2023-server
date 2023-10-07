@@ -4,7 +4,26 @@ import express, { type Request, type Response } from 'express';
 
 const router = express.Router();
 
-router.post('/create', async (req: Request, res: Response) => {
+router.post('/login', async (req: Request, res: Response) => {
+  try {
+    const { email, password } = req.body;
+    const userService = new UserService();
+
+    const loginResult = await userService.loginUser(email, password);
+
+    if (loginResult.success) {
+      res
+        .status(200)
+        .json({ message: 'Login successful', token: loginResult.token });
+    } else {
+      res.status(401).json({ message: 'Login failed' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+});
+
+router.post('/register', async (req: Request, res: Response) => {
   try {
     const userService = new UserService();
 
@@ -44,7 +63,7 @@ router.get('/config/city', async (req: Request, res: Response) => {
       res.status(500).json({ message: 'Server error' });
     }
   } catch (error) {
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: error });
   }
 });
 
@@ -60,7 +79,7 @@ router.get('/config/country', async (req: Request, res: Response) => {
       res.status(500).json({ message: 'Server error' });
     }
   } catch (error) {
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: error });
   }
 });
 
@@ -76,7 +95,7 @@ router.get('/config/education', async (req: Request, res: Response) => {
       res.status(500).json({ message: 'Server error' });
     }
   } catch (error) {
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: error });
   }
 });
 
@@ -92,7 +111,7 @@ router.get('/test', async (req: Request, res: Response) => {
       res.status(500).json({ message: 'Server error' });
     }
   } catch (error) {
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: error });
   }
 });
 
