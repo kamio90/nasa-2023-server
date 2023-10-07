@@ -15,23 +15,24 @@ export function verifyToken(
   res: Response,
   next: NextFunction
 ): void {
-  const token = req.headers.authorization;
+  const authorizationHeader = req.headers.authorization;
 
-  if (token == null) {
+  if (authorizationHeader == null) {
     res.status(401).json({ message: 'Unauthorized: Token is missing' });
     return;
   }
 
+  const token = authorizationHeader.split(' ')[1];
   try {
     const decoded = jwt.verify(
       token,
       process.env.JWT_SECRET_KEY ?? 'your-secret-key'
     );
-
     req.user = decoded;
 
     next();
   } catch (error) {
+    console.log(error);
     res.status(401).json({ message: 'Unauthorized: Invalid token' });
   }
 }

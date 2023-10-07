@@ -46,7 +46,7 @@ export class UserService {
         { userId: savedUser._id },
         process.env.JWT_SECRET_KEY ?? 'your-secret-key',
         {
-          expiresIn: process.env.JWT_TOKEN_LIFE_TIME_IN_HOURS,
+          expiresIn: '1h',
         }
       );
 
@@ -74,11 +74,11 @@ export class UserService {
         { userId: user._id },
         process.env.JWT_SECRET_KEY ?? 'your-secret-key',
         {
-          expiresIn: process.env.JWT_TOKEN_LIFE_TIME_IN_HOURS,
+          expiresIn: '1h',
         }
       );
 
-      return { success: true, message: 'Login successful', token };
+      return { success: true, message: user._id, token };
     } catch (error) {
       throw error;
     }
@@ -142,6 +142,7 @@ export class UserService {
   async getUserById(userId: string): Promise<User | null> {
     try {
       const user = await UserModel.findById(userId);
+      console.log(user);
       return user;
     } catch (error) {
       throw error;

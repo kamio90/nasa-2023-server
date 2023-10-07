@@ -207,7 +207,7 @@ router.get(
     try {
       const { userId } = req.params;
 
-      if (userId !== req.user.id) {
+      if (userId !== req.params.userId) {
         return res.status(403).json({ message: 'Access denied' });
       }
 
