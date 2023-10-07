@@ -5,6 +5,7 @@ import { connectToDatabase } from '@infrastructure/database/mongoose';
 import logger from '@infrastructure/log/logger';
 import 'dotenv/config';
 import userRouter from '@application/routes/user.router';
+import projectRouter from '@application/routes/project.router';
 import cors from 'cors';
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
   try {
     await connectToDatabase();
     app.use('/user', userRouter);
+    app.use('/project', projectRouter);
     app.listen(PORT, () => {
       logger.info(`Server is listening on port ${PORT}`);
     });
