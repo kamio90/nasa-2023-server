@@ -12,6 +12,7 @@ export interface ProjectDocument extends Document {
   projectEndingDate: Date;
   projectDescription: string;
   personalDescription: string;
+  favoriteByUsers: Types.ObjectId[];
 }
 
 const projectSchema = new Schema<ProjectDocument>(
@@ -37,6 +38,7 @@ const projectSchema = new Schema<ProjectDocument>(
     projectEndingDate: { type: Date, required: true },
     projectDescription: { type: String, required: true },
     personalDescription: { type: String, required: true },
+    favoriteByUsers: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   },
   { timestamps: true }
 );

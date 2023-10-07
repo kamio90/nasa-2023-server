@@ -6,7 +6,7 @@ import {
 } from '@domain/entity/project.entity';
 import { ProjectPlace } from '@domain/interfaces/project-place.interface';
 import { ProjectStatus } from '@domain/interfaces/project-status.interface';
-import { type Types } from 'mongoose';
+import { Types } from 'mongoose';
 
 interface ResponseType {
   success: boolean;
@@ -15,6 +15,39 @@ interface ResponseType {
 }
 
 export class ProjectService {
+  async getAllProjects(): Promise<ProjectDocument[]> {
+    try {
+      const projects = await ProjectModel.find();
+      return projects;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getProjectById(projectId: string): Promise<ProjectDocument | null> {
+    try {
+      const project = await ProjectModel.findById(projectId);
+      return project;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async addToFavorites(projectId: string, userId: string): Promise<void> {
+    const project = await ProjectModel.findById(projectId);
+
+    if (project == null) {
+      throw new Error('Project not found');
+    }
+
+    const userIdAsObjectId = new Types.ObjectId(userId);
+
+    if (!project.favoriteByUsers.includes(userIdAsObjectId)) {
+      project.favoriteByUsers.push(userIdAsObjectId);
+      await project.save();
+    }
+  }
+
   async createProject(
     title: string,
     authorId: Types.ObjectId,

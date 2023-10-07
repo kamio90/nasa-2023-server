@@ -1,16 +1,60 @@
 import { type ProjectPlace } from '@domain/interfaces/project-place.interface';
 import { type ProjectStatus } from '@domain/interfaces/project-status.interface';
+import { verifyToken } from '@domain/middlewares/jwt-authentication.middleware';
 import { ProjectService } from '@domain/services/project.service';
 import express, { type Request, type Response } from 'express';
-import { Types } from 'mongoose';
 
 const router = express.Router();
 
+router.get('/projects', async (req: Request, res: Response) => {
+  try {
+    const projectService = new ProjectService();
+    const projects = await projectService.getAllProjects();
+    res.status(200).json(projects);
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+});
+
+router.get('/projects/:projectId', async (req: Request, res: Response) => {
+  try {
+    const { projectId } = req.params;
+    const projectService = new ProjectService();
+    const project = await projectService.getProjectById(projectId);
+
+    if (project == null) {
+      res.status(404).json({ message: 'Project not found' });
+    } else {
+      res.status(200).json(project);
+    }
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+});
+
+router.post(
+  '/:projectId/favorite',
+  verifyToken,
+  async (req: Request, res: Response) => {
+    try {
+      const projectService = new ProjectService();
+      const { projectId } = req.params;
+      const userId = req.user.id;
+
+      await projectService.addToFavorites(projectId, userId);
+
+      res.status(200).json({ message: 'Project added to favorites' });
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
+  }
+);
+
 router.get('/config/status', async (req: Request, res: Response) => {
   try {
-    const userService = new ProjectService();
+    const projectService = new ProjectService();
 
-    const result = await userService.getProjectStatus();
+    const result = await projectService.getProjectStatus();
 
     if (result.success) {
       res.status(200).json({ message: result.message });
@@ -24,9 +68,9 @@ router.get('/config/status', async (req: Request, res: Response) => {
 
 router.get('/config/place', async (req: Request, res: Response) => {
   try {
-    const userService = new ProjectService();
+    const projectService = new ProjectService();
 
-    const result = await userService.getProjectPlace();
+    const result = await projectService.getProjectPlace();
 
     if (result.success) {
       res.status(200).json({ message: result.message });
@@ -42,7 +86,6 @@ router.post('/create', async (req: Request, res: Response) => {
   try {
     const {
       title,
-      authorId,
       status,
       placeWhereProjectTakePlace,
       placeWhereUserCanParticipateInProject,
@@ -53,10 +96,11 @@ router.post('/create', async (req: Request, res: Response) => {
     } = req.body;
 
     const projectService = new ProjectService();
+    const userId = req.user.id;
 
     const createdProject = await projectService.createProject(
       title,
-      new Types.ObjectId(authorId),
+      userId,
       status as ProjectStatus,
       placeWhereProjectTakePlace as ProjectPlace,
       placeWhereUserCanParticipateInProject as ProjectPlace,
