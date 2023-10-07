@@ -13,6 +13,16 @@ import { UserAcademicTitleEurope } from '@domain/interfaces/user/user-academic-t
 import { UserAcademicTitleCanada } from '@domain/interfaces/user/user-academic-title-canada.interface';
 import { UserAcademicTitleOther } from '@domain/interfaces/user/user-academic-title-other.interface';
 import { UserAcademicTitleUSA } from '@domain/interfaces/user/user-academic-title-usa.interface';
+import { UserFieldsOfScience } from '@domain/interfaces/user/user-fields-of-science.interface';
+import { UserDisciplinesOfScienceAgriculturalScience } from '@domain/interfaces/user/user-disciplines-of-science-agricultural-science.interface';
+import { UserDisciplinesOfScienceArt } from '@domain/interfaces/user/user-disciplines-of-science-art.interface';
+import { UserDisciplinesOfScienceConicScience } from '@domain/interfaces/user/user-disciplines-of-science-conic-science.interface';
+import { UserDisciplinesOfScienceEngineeringAndTechnicalSciences } from '@domain/interfaces/user/user-disciplines-of-science-engineering-and-technical-sciences.interface';
+import { UserDisciplinesOdScienceExactAndNaturalScience } from '@domain/interfaces/user/user-disciplines-of-science-exact-and-natural-science.interface';
+import { UserDisciplinesOfScienceHumanities } from '@domain/interfaces/user/user-disciplines-of-science-humanities.interface';
+import { UserDisciplinesOfScienceMedicalAndHealthSciences } from '@domain/interfaces/user/user-disciplines-of-science-medical-and-health-sciences.interface';
+import { UserDisciplinesOfScienceSocialScience } from '@domain/interfaces/user/user-disciplines-of-science-social-science.interface';
+import { UserDisciplinesOfScienceTheologicalScience } from '@domain/interfaces/user/user-disciplines-of-science-theological-science.interface';
 
 interface ResponseType {
   success: boolean;
@@ -118,6 +128,75 @@ export class UserService {
 
   async getUserLanguages(): Promise<ResponseType> {
     return { success: true, message: new Array(UserLanguages) };
+  }
+
+  async getUserFieldsOfScience(): Promise<ResponseType> {
+    return { success: true, message: new Array(UserFieldsOfScience) };
+  }
+
+  async getUserDisciplinesOfScienceAgriculturalScience(): Promise<ResponseType> {
+    return {
+      success: true,
+      message: new Array(UserDisciplinesOfScienceAgriculturalScience),
+    };
+  }
+
+  async getUserDisciplinesOfScienceArt(): Promise<ResponseType> {
+    return {
+      success: true,
+      message: new Array(UserDisciplinesOfScienceArt),
+    };
+  }
+
+  async getUserDisciplinesOfScienceConicScience(): Promise<ResponseType> {
+    return {
+      success: true,
+      message: new Array(UserDisciplinesOfScienceConicScience),
+    };
+  }
+
+  async getUserDisciplinesOfScienceEngineeringAndTechnicalSciences(): Promise<ResponseType> {
+    return {
+      success: true,
+      message: new Array(
+        UserDisciplinesOfScienceEngineeringAndTechnicalSciences
+      ),
+    };
+  }
+
+  async getUserDisciplinesOfScienceHumanities(): Promise<ResponseType> {
+    return {
+      success: true,
+      message: new Array(UserDisciplinesOfScienceHumanities),
+    };
+  }
+
+  async getUserDisciplinesOfScienceMedicalAndHealthSciences(): Promise<ResponseType> {
+    return {
+      success: true,
+      message: new Array(UserDisciplinesOfScienceMedicalAndHealthSciences),
+    };
+  }
+
+  async getUserDisciplinesOfScienceSocialScience(): Promise<ResponseType> {
+    return {
+      success: true,
+      message: new Array(UserDisciplinesOfScienceSocialScience),
+    };
+  }
+
+  async getUserDisciplinesOfScienceTheologicalScience(): Promise<ResponseType> {
+    return {
+      success: true,
+      message: new Array(UserDisciplinesOfScienceTheologicalScience),
+    };
+  }
+
+  async getUserDisciplinesOfScienceExactAndNaturalScience(): Promise<ResponseType> {
+    return {
+      success: true,
+      message: new Array(UserDisciplinesOdScienceExactAndNaturalScience),
+    };
   }
 
   async test(): Promise<ResponseType> {

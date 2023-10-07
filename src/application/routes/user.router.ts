@@ -108,6 +108,200 @@ router.get(
   }
 );
 
+router.get('/config/fields-of-science', async (req: Request, res: Response) => {
+  try {
+    const userService = new UserService();
+
+    const result = await userService.getUserFieldsOfScience();
+
+    if (result.success) {
+      res.status(200).json({ message: result.message });
+    } else {
+      res.status(500).json({ message: 'Server error' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+});
+
+router.get(
+  '/config/fields-of-science/agricultural-science',
+  async (req: Request, res: Response) => {
+    try {
+      const userService = new UserService();
+
+      const result =
+        await userService.getUserDisciplinesOfScienceAgriculturalScience();
+
+      if (result.success) {
+        res.status(200).json({ message: result.message });
+      } else {
+        res.status(500).json({ message: 'Server error' });
+      }
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
+  }
+);
+
+router.get(
+  '/config/fields-of-science/art',
+  async (req: Request, res: Response) => {
+    try {
+      const userService = new UserService();
+
+      const result = await userService.getUserDisciplinesOfScienceArt();
+
+      if (result.success) {
+        res.status(200).json({ message: result.message });
+      } else {
+        res.status(500).json({ message: 'Server error' });
+      }
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
+  }
+);
+
+router.get(
+  '/config/fields-of-science/conic-science',
+  async (req: Request, res: Response) => {
+    try {
+      const userService = new UserService();
+
+      const result =
+        await userService.getUserDisciplinesOfScienceConicScience();
+
+      if (result.success) {
+        res.status(200).json({ message: result.message });
+      } else {
+        res.status(500).json({ message: 'Server error' });
+      }
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
+  }
+);
+
+router.get(
+  '/config/fields-of-science/engineering-and-technical-sciences',
+  async (req: Request, res: Response) => {
+    try {
+      const userService = new UserService();
+
+      const result =
+        await userService.getUserDisciplinesOfScienceEngineeringAndTechnicalSciences();
+
+      if (result.success) {
+        res.status(200).json({ message: result.message });
+      } else {
+        res.status(500).json({ message: 'Server error' });
+      }
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
+  }
+);
+
+router.get(
+  '/config/fields-of-science/exact-and-natural-science',
+  async (req: Request, res: Response) => {
+    try {
+      const userService = new UserService();
+
+      const result =
+        await userService.getUserDisciplinesOfScienceExactAndNaturalScience();
+
+      if (result.success) {
+        res.status(200).json({ message: result.message });
+      } else {
+        res.status(500).json({ message: 'Server error' });
+      }
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
+  }
+);
+
+router.get(
+  '/config/fields-of-science/humanities',
+  async (req: Request, res: Response) => {
+    try {
+      const userService = new UserService();
+
+      const result = await userService.getUserDisciplinesOfScienceHumanities();
+
+      if (result.success) {
+        res.status(200).json({ message: result.message });
+      } else {
+        res.status(500).json({ message: 'Server error' });
+      }
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
+  }
+);
+
+router.get(
+  '/config/fields-of-science/medical-and-health-sciences',
+  async (req: Request, res: Response) => {
+    try {
+      const userService = new UserService();
+
+      const result =
+        await userService.getUserDisciplinesOfScienceMedicalAndHealthSciences();
+
+      if (result.success) {
+        res.status(200).json({ message: result.message });
+      } else {
+        res.status(500).json({ message: 'Server error' });
+      }
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
+  }
+);
+
+router.get(
+  '/config/fields-of-science/social-science',
+  async (req: Request, res: Response) => {
+    try {
+      const userService = new UserService();
+
+      const result =
+        await userService.getUserDisciplinesOfScienceSocialScience();
+
+      if (result.success) {
+        res.status(200).json({ message: result.message });
+      } else {
+        res.status(500).json({ message: 'Server error' });
+      }
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
+  }
+);
+
+router.get(
+  '/config/fields-of-science/theological-science',
+  async (req: Request, res: Response) => {
+    try {
+      const userService = new UserService();
+
+      const result =
+        await userService.getUserDisciplinesOfScienceTheologicalScience();
+
+      if (result.success) {
+        res.status(200).json({ message: result.message });
+      } else {
+        res.status(500).json({ message: 'Server error' });
+      }
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
+  }
+);
+
 router.get('/config/city', async (req: Request, res: Response) => {
   try {
     const userService = new UserService();
