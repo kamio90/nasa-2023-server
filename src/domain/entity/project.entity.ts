@@ -1,6 +1,6 @@
 import { Schema, type Document, type Types, model } from 'mongoose';
-import { ProjectPlace } from '@domain/interfaces/project-place.interface';
-import { ProjectStatus } from '@domain/interfaces/project-status.interface';
+import { ProjectPlace } from '@domain/interfaces/project/project-place.interface';
+import { ProjectStatus } from '@domain/interfaces/project/project-status.interface';
 
 export interface ProjectDocument extends Document {
   title: string;

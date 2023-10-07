@@ -1,8 +1,7 @@
-import { UserAcademicTitleBase } from '@domain/interfaces/user-academic-title.interface';
-import { UserCity } from '@domain/interfaces/user-city.interface';
-import { UserCountry } from '@domain/interfaces/user-country.interface';
-import { UserEducation } from '@domain/interfaces/user-education.interface';
-import { UserLanguages } from '@domain/interfaces/user-languages.interface';
+import { UserCity } from '@domain/interfaces/user/user-city.interface';
+import { UserCountry } from '@domain/interfaces/user/user-country.interface';
+import { UserAcademicTitle } from '@domain/interfaces/user/user-education.interface';
+import { UserLanguages } from '@domain/interfaces/user/user-languages.interface';
 import { Document, Schema, type Model, model } from 'mongoose';
 
 export class User extends Document {
@@ -13,8 +12,8 @@ export class User extends Document {
     public phoneNumber: string,
     public country: UserCountry,
     public city: UserCity,
-    public education: UserEducation,
-    public academicTitle: UserAcademicTitleBase,
+    public education: UserAcademicTitle,
+    public academicTitle: string,
     public workExperience: number,
     public primaryLanguage: UserLanguages,
     public description: string
@@ -32,14 +31,10 @@ const UserSchema: Schema = new Schema({
   city: { type: String, enum: Object.values(UserCity), required: true },
   education: {
     type: String,
-    enum: Object.values(UserEducation),
+    enum: Object.values(UserAcademicTitle),
     required: true,
   },
-  academicTitle: {
-    type: String,
-    enum: Object.values(UserAcademicTitleBase),
-    required: true,
-  },
+  academicTitle: { type: String, required: true },
   workExperience: { type: Number, required: true },
   primaryLanguage: {
     type: String,

@@ -1,18 +1,18 @@
 /* eslint-disable no-useless-catch */
 import { UserModel, type User } from '@domain/entity/user.entity';
-import { UserAcademicTitleBase } from '@domain/interfaces/user-academic-title.interface';
-import { UserCity } from '@domain/interfaces/user-city.interface';
-import { UserCountry } from '@domain/interfaces/user-country.interface';
-import { UserEducation } from '@domain/interfaces/user-education.interface';
-import { UserLanguages } from '@domain/interfaces/user-languages.interface';
+import { UserAcademicTitleBase } from '@domain/interfaces/user/user-academic-title.interface';
+import { UserCity } from '@domain/interfaces/user/user-city.interface';
+import { UserCountry } from '@domain/interfaces/user/user-country.interface';
+import { UserAcademicTitle } from '@domain/interfaces/user/user-education.interface';
+import { UserLanguages } from '@domain/interfaces/user/user-languages.interface';
 import { validateUserInput } from '@domain/validation/user.validation';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { type Request } from 'express';
-import { UserAcademicTitleEurope } from '@domain/interfaces/user-academic-title-europe.interface';
-import { UserAcademicTitleCanada } from '@domain/interfaces/user-academic-title-canada.interface';
-import { UserAcademicTitleOther } from '@domain/interfaces/user-academic-title-other.interface';
-import { UserAcademicTitleUSA } from '@domain/interfaces/user-academic-title-usa.interface';
+import { UserAcademicTitleEurope } from '@domain/interfaces/user/user-academic-title-europe.interface';
+import { UserAcademicTitleCanada } from '@domain/interfaces/user/user-academic-title-canada.interface';
+import { UserAcademicTitleOther } from '@domain/interfaces/user/user-academic-title-other.interface';
+import { UserAcademicTitleUSA } from '@domain/interfaces/user/user-academic-title-usa.interface';
 
 interface ResponseType {
   success: boolean;
@@ -113,7 +113,7 @@ export class UserService {
   }
 
   async getUserEducation(): Promise<ResponseType> {
-    return { success: true, message: new Array(UserEducation) };
+    return { success: true, message: new Array(UserAcademicTitle) };
   }
 
   async getUserLanguages(): Promise<ResponseType> {

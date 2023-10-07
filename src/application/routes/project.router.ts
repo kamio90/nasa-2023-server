@@ -1,5 +1,5 @@
-import { type ProjectPlace } from '@domain/interfaces/project-place.interface';
-import { type ProjectStatus } from '@domain/interfaces/project-status.interface';
+import { type ProjectPlace } from '@domain/interfaces/project/project-place.interface';
+import { type ProjectStatus } from '@domain/interfaces/project/project-status.interface';
 import { verifyToken } from '@domain/middlewares/jwt-authentication.middleware';
 import { ProjectService } from '@domain/services/project.service';
 import express, { type Request, type Response } from 'express';

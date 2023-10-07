@@ -4,8 +4,8 @@ import {
   ProjectModel,
   type ProjectDocument,
 } from '@domain/entity/project.entity';
-import { ProjectPlace } from '@domain/interfaces/project-place.interface';
-import { ProjectStatus } from '@domain/interfaces/project-status.interface';
+import { ProjectPlace } from '@domain/interfaces/project/project-place.interface';
+import { ProjectStatus } from '@domain/interfaces/project/project-status.interface';
 import { Types } from 'mongoose';
 
 interface ResponseType {

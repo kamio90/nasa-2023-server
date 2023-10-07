@@ -1,4 +1,4 @@
-export enum UserEducation {
+export enum UserAcademicTitle {
   Student = 'Student',
   Doctor = 'Doctor',
   Professor = 'Professor',
