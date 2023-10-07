@@ -178,9 +178,11 @@ router.post('/login', async (req: Request, res: Response) => {
     const loginResult = await userService.loginUser(email, password);
 
     if (loginResult.success) {
-      res
-        .status(200)
-        .json({ message: 'Login successful', token: loginResult.token });
+      res.status(200).json({
+        message: 'Login successful',
+        userId: loginResult.message,
+        token: loginResult.token,
+      });
     } else {
       res.status(401).json({ message: 'Login failed' });
     }

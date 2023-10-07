@@ -142,7 +142,6 @@ export class UserService {
   async getUserById(userId: string): Promise<User | null> {
     try {
       const user = await UserModel.findById(userId);
-      console.log(user);
       return user;
     } catch (error) {
       throw error;
