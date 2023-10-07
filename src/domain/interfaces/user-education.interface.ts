@@ -1,1 +1,5 @@
-export type UserEducation = 'Student' | 'Doctor' | 'Professor';
+export enum UserEducation {
+  Student = 'Student',
+  Doctor = 'Doctor',
+  Professor = 'Professor',
+}

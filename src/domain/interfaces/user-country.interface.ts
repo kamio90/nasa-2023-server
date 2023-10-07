@@ -1,1 +1,4 @@
-export type UserCountry = 'Poland' | 'England';
+export enum UserCountry {
+  Poland = 'Poland',
+  England = 'England',
+}

@@ -1,1 +1,4 @@
-export type UserCity = 'Myślenice' | 'Kraków';
+export enum UserCity {
+  Myslenice = 'Myślenice',
+  Krakow = 'Kraków',
+}

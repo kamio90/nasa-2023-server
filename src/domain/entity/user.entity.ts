@@ -12,6 +12,8 @@ export class User {
     public country: UserCountry,
     public city: UserCity,
     public education: UserEducation,
-    public academicTitle: UserAcademicTitle
+    public academicTitle: UserAcademicTitle,
+    public workExperience: number,
+    public primaryLanguage: string
   ) {}
 }

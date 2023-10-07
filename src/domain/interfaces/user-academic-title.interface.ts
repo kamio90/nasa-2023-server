@@ -1,1 +1,3 @@
-export type UserAcademicTitle = 'Jakiś Tytuł';
+export enum UserAcademicTitle {
+  Test = 'Test',
+}
