@@ -1,7 +1,7 @@
 export enum UserFieldsOfScience {
   Humanities = 'Humanities',
   EngineeringAndTechnicalSciences = 'Engineering And Technical Sciences',
-  MedicalAndHealthSciences = 'Medical And HealthSciences',
+  MedicalAndHealthSciences = 'Medical And Health Sciences',
   AgriculturalScience = 'Agricultural Science',
   SocialScience = 'Social Science',
   ConicScience = 'Conic Science',
