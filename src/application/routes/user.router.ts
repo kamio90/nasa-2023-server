@@ -19,7 +19,9 @@ router.post('/login', async (req: Request, res: Response) => {
       res.status(401).json({ message: 'Login failed' });
     }
   } catch (error) {
-    res.status(500).json({ message: error });
+    res
+      .status(401)
+      .json({ message: 'Login failed: Invalid email or password' });
   }
 });
 
@@ -30,7 +32,7 @@ router.post('/register', async (req: Request, res: Response) => {
     const createdUser = await userService.createUser(newUserInput);
     res.status(201).json(createdUser);
   } catch (error) {
-    res.status(500).json({ message: error });
+    res.status(400).json({ message: 'Registration failed: Invalid data' });
   }
 });
 
