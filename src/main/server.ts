@@ -19,10 +19,6 @@ app.use(bodyParser.json());
     await connectToDatabase();
     app.use('/user', userRouter);
     app.use('/project', projectRouter);
-    app.use((req, res, next) => {
-      logger.debug(req.body);
-      next();
-    });
     app.listen(PORT, () => {
       logger.info(`Server is listening on port ${PORT}`);
     });

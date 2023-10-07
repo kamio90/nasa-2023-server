@@ -26,7 +26,6 @@ router.post('/login', async (req: Request, res: Response) => {
 router.post('/register', async (req: Request, res: Response) => {
   try {
     const userService = new UserService();
-
     const newUserInput: User = req.body;
     const createdUser = await userService.createUser(newUserInput);
     res.status(201).json(createdUser);
