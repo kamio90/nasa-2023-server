@@ -16,7 +16,8 @@ export class User extends Document {
     public education: UserEducation,
     public academicTitle: UserAcademicTitleBase,
     public workExperience: number,
-    public primaryLanguage: UserLanguages
+    public primaryLanguage: UserLanguages,
+    public description: string
   ) {
     super();
   }
@@ -45,6 +46,7 @@ const UserSchema: Schema = new Schema({
     enum: Object.values(UserLanguages),
     required: true,
   },
+  description: { type: String, required: true },
 });
 
 export const UserModel: Model<User> = model<User>('User', UserSchema);
