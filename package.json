@@ -1,5 +1,5 @@
 {
-  "name": "circle-edge-server",
+  "name": "nasa-2023-server",
   "version": "1.0.0",
   "description": "",
   "main": "dist/main/server.js",
